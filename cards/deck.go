@@ -1,19 +1,21 @@
 package main
 
 import (
-	"time"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of 'deck'
 // which is a slice of strings
-
+// which is an string array - can grow more
 type deck []string
 
+//Creating a set of cards for a deck
+// this newDeck() function returns of type deck
 func newDeck() deck {
 	cards := deck{}
 
@@ -29,6 +31,8 @@ func newDeck() deck {
 	return cards
 }
 
+// this function receives a type 'deck'
+// which helps to consume this function by deck.print()
 func (d deck) print() {
 	// For index, variable := range cards which is helping to loop
 	// index - index of each item
@@ -40,6 +44,9 @@ func (d deck) print() {
 	}
 }
 
+// This function gets a parameter 'deck' and from that returns two different 'deck' slices.
+// this function helps to slice the given deck into two based on the handsize
+// returns two deck slices (0 to give_size and from given_size to end)
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }

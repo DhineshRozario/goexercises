@@ -23,12 +23,18 @@ func main() {
 
 	// remainingDeck3.print()
 
-	fmt.Println(cards.toString())
 
-	cards.saveToFile("my_cards.txt")
+	// fmt.Println("Before Suffling ", cards.toString())
 
-	deck := newDeckFromFile("my_cards.txt")
+	//Shuffle
+	cards.shuffle()
 
-	deck.print()
+	fmt.Println("After Suffling \n", cards.toString())
+
+	// cards.saveToFile("my_cards.txt")
+
+	// deck := newDeckFromFile("my_cards.txt")
+
+	// deck.print()
 
 }

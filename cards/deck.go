@@ -1,8 +1,10 @@
 package main
 
 import (
+	"time"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -61,8 +63,19 @@ func newDeckFromFile(fileName string) deck {
 	}
 
 	if bs != nil {
-		cardsText := strings.Split(string (bs), ",")
+		cardsText := strings.Split(string(bs), ",")
 		return deck(cardsText)
 	}
 	return nil
+}
+
+func (d deck) shuffle() {
+
+	source := rand.NewSource(time.Now().UnixNano())
+	randomNumber := rand.New(source)
+
+	for index := range d {
+		newPosition := randomNumber.Intn(len(d) - 1)
+		d[index], d[newPosition] = d[newPosition], d[index]
+	}
 }

@@ -1,23 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
-	// var card string = "Ace of Spades"
-	// card := "Ace of Spades"
-	card := newCard()
-	fmt.Println(card)
 
-	id := newNumber()
-	fmt.Println(id)
-}
+	//Declaring Slice - array of elements which can grow.
+	cards := newDeck()
 
-func newCard() string {
-	return "Ace of Spades"
-}
+	hand1, remainingDeck1 := deal(cards, 13)
 
-func newNumber() int {
-	return 5
+	hand1.print()
+
+	hand2, remainingDeck2 := deal(remainingDeck1, 13)
+
+	hand2.print()
+
+	hand3, remainingDeck3 := deal(remainingDeck2, 13)
+
+	hand3.print()
+
+	remainingDeck3.print()
 }

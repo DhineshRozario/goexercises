@@ -6,7 +6,7 @@ import (
 
 type person struct {
 	firstName string
-	lastName string
+	lastName  string
 
 	// we can remove this variable 'contact'
 	// contact contactInfo
@@ -15,13 +15,13 @@ type person struct {
 
 type contactInfo struct {
 	email string
-	zip int
+	zip   int
 }
 
 func main() {
-//First way of declaring the person
-	// alex := person {
-	// 	firstName: "Dewin", 
+	//First way of declaring the person
+	// dewin := person {
+	// 	firstName: "Dewin",
 	// 	lastName: "Dhinesh",
 	// 	contactInfo : contactInfo {
 	// 		email: "dewindhinesh@gmail.com",
@@ -29,16 +29,19 @@ func main() {
 	// 	},
 	// }
 
-//another way of declaring the person
-	var alex person
+	//another way of declaring the person
+	var dewin person
 
-	alex.firstName = "Dewiz"
-	alex.lastName = "Dhinesh"
+	dewin.firstName = "Dewin"
+	dewin.lastName = "Dhinesh"
 
-	alex.contactInfo.email = "dewizdhinesh@gmail.com"
-	alex.contactInfo.zip = 638503
+	dewin.contactInfo.email = "dewindhinesh@gmail.com"
+	dewin.contactInfo.zip = 638503
 
+	dewin.print()
+}
+
+func (p person) print() {
 	// %+v will print verbose
-	fmt.Printf("%+v", alex)
-
+	fmt.Printf("%+v", p)
 }

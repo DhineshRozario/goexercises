@@ -39,9 +39,18 @@ func main() {
 	dewin.contactInfo.zip = 638503
 
 	dewin.print()
+
+	dewin.updateFirstName("Dewiz")
+
+	dewin.print()
 }
 
 func (p person) print() {
 	// %+v will print verbose
 	fmt.Printf("%+v", p)
+}
+
+// This is passed by value, so the 'person' type will not be updated
+func (p person) updateFirstName(newFirstName string) {
+	p.firstName = newFirstName
 }

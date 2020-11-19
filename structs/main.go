@@ -40,6 +40,7 @@ func main() {
 
 	dewin.print()
 
+	// & refers the memory address of 'dewin'
 	dewinPointer := &dewin
 
 	dewinPointer.updateFirstName("Dewiz")
@@ -47,14 +48,14 @@ func main() {
 	dewin.print()
 }
 
-func (p person) print() {
-	// %+v will print verbose
-	fmt.Printf("%+v\n", p)
-}
-
 // This is passed by reference, so the 'person' type will be updated
 func (pointerToPerson *person) updateFirstName(newFirstName string) {
 	(*pointerToPerson).firstName = newFirstName
 
 	(*pointerToPerson).print()
+}
+
+func (p person) print() {
+	// %+v will print verbose
+	fmt.Printf("%+v\n", p)
 }

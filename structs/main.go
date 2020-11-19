@@ -40,17 +40,21 @@ func main() {
 
 	dewin.print()
 
-	dewin.updateFirstName("Dewiz")
+	dewinPointer := &dewin
+
+	dewinPointer.updateFirstName("Dewiz")
 
 	dewin.print()
 }
 
 func (p person) print() {
 	// %+v will print verbose
-	fmt.Printf("%+v", p)
+	fmt.Printf("%+v\n", p)
 }
 
 // This is passed by value, so the 'person' type will not be updated
-func (p person) updateFirstName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateFirstName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
+
+	(*pointerToPerson).print()
 }

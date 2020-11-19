@@ -10,7 +10,7 @@ type person struct {
 }
 
 func main() {
-	alex := person {"Dewin", "Dhinesh"}
+	alex := person {firstName: "Dewin", lastName: "Dhinesh"}
 
 	fmt.Println(alex)
 }

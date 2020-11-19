@@ -10,7 +10,15 @@ type person struct {
 }
 
 func main() {
-	alex := person {firstName: "Dewin", lastName: "Dhinesh"}
+	// alex := person {firstName: "Dewin", lastName: "Dhinesh"}
+
+	var alex person
 
 	fmt.Println(alex)
+
+//Output:
+//Coop-Admin@DESKTOP-1UU7LCH MINGW64 ~/Desktop/Coop/Go/Projects/goexercises/structs (start-guide)
+//$ go run main.go 
+//{ }
+
 }

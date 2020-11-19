@@ -10,9 +10,12 @@ type person struct {
 }
 
 func main() {
-	alex := person {firstName: "Dewin", lastName: "Dhinesh"}
+	// alex := person {firstName: "Dewin", lastName: "Dhinesh"}
 
-	// var alex person
+	var alex person
+
+	alex.firstName = "Dewiz"
+	alex.lastName = "Dhinesh"
 
 	// %+v will print verbose
 	fmt.Printf("%+v", alex)

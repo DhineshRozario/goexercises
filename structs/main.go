@@ -40,10 +40,7 @@ func main() {
 
 	dewin.print()
 
-	// & refers the memory address of 'dewin'
-	dewinPointer := &dewin
-
-	dewinPointer.updateFirstName("Dewiz")
+	dewin.updateFirstName("Dewiz")
 
 	dewin.print()
 }
@@ -52,7 +49,7 @@ func main() {
 func (pointerToPerson *person) updateFirstName(newFirstName string) {
 	(*pointerToPerson).firstName = newFirstName
 
-	(*pointerToPerson).print()
+	// (*pointerToPerson).print()
 }
 
 func (p person) print() {

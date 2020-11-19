@@ -12,9 +12,9 @@ func main() {
 	for _, value := range values {
 		
 		if value % 2 == 0 {
-			fmt.Printf("%d is even\n", value)
+			fmt.Println(value, "is even")
 		} else {
-			fmt.Printf("%d is odd\n", value)
+			fmt.Println(value, "is odd")
 		}
 	}
 }

@@ -52,7 +52,7 @@ func (p person) print() {
 	fmt.Printf("%+v\n", p)
 }
 
-// This is passed by value, so the 'person' type will not be updated
+// This is passed by reference, so the 'person' type will be updated
 func (pointerToPerson *person) updateFirstName(newFirstName string) {
 	(*pointerToPerson).firstName = newFirstName
 

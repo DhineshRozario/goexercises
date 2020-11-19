@@ -7,21 +7,21 @@ func main() {
 	colors := map[string]string{
 		"red":   "#ff0000",
 		"green": "#008000",
-		"lime":  "#00ff00",
 		"blue":  "#0000ff",
+		"white": "#ffffff",
+		"black": "#000000",
 	}
 
-	// 2. Normal way
-	// var colors map[string]string
-
-	// 3. using make()
-	// colors := make(map[string]string)
-
-	//Adding addional values
-    colors["white"] = "#ffffff"
-    
-    //delete the value from map
-    delete(colors, "lime")
-
 	fmt.Println(colors)
+
+	// map is passed by reference
+	printMap(colors)
+
+}
+
+// map is passed by reference, if we change any value inside the map, then it will be updated in calling place
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Printf("Hex code for color %v -> %v\n", color, hex)
+	}
 }

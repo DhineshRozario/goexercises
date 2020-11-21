@@ -1,8 +1,6 @@
 package main
 
 import (
-	// "fmt"
-	"fmt"
 	"log"
 	"net/http"
 )
@@ -30,37 +28,37 @@ func main() {
 		go checkLink(link, c) // added channel c, to communicate with main routine
 	}
 
-	printResponse(links, c)
+	printResponse(c)
 
-	fmt.Println("Main Routine Exits")
+	log.Println("Main Routine Exits")
 }
 
 func checkLink(link string, c chan string) {
 
-	_, err := http.Get(link)
+	res, err := http.Get(link)
 
 	if err != nil {
-		// fmt.Println("Error: Link might be down:", link, err)
+		log.Println("Error: Link might be down:", link, err)
 		//Adding message into channel, which can be read by Main Routine
-		c <- " Might be down, I think"
+		c <- link
 		return
 	}
 
-	// if res.StatusCode > 0 {
-	// 	status := "- is DOWN"
-	// 	if res.StatusCode == 200 {
-	// 		status = "- is UP"
-	// 	}
-	// 	// fmt.Println("Response:", link, res.StatusCode, status)
-	// }
+	if res.StatusCode > 0 {
+		status := "- is DOWN"
+		if res.StatusCode == 200 {
+			status = "- is UP"
+		}
+		log.Println("Response:", link, res.StatusCode, status)
+	}
 	//Adding message into channel, which can be read by Main Routine
-	c <- " Yep, its up"
+	c <- link
 	// fmt.Println("Chile Routine Exits for link:", link)
 }
 
-func printResponse(links []string, c chan string) {
+func printResponse(c chan string) {
 	// Printing the data comes into channel to console.
-	for _, link := range links {
-		log.Println("Response:", link, <-c)
+	for  {
+		go checkLink(<-c, c)
 	}
 }

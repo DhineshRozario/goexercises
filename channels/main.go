@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -28,12 +29,21 @@ func main() {
 		go checkLink(link, c) // added channel c, to communicate with main routine
 	}
 
-	printResponse(c)
+    // all the response received in 'channel c'
+	// looping with the data comes into channel multiple times.
+	for l := range c {
+		go anonymus(l, c)
+	}
 
 	log.Println("Main Routine Exits")
 }
+func anonymus(link string, c chan string) {  
+    time.Sleep(5 * time.Second)
+    checkLink(link, c)
+}
 
 func checkLink(link string, c chan string) {
+    
 
 	res, err := http.Get(link)
 
@@ -54,11 +64,4 @@ func checkLink(link string, c chan string) {
 	//Adding message into channel, which can be read by Main Routine
 	c <- link
 	// fmt.Println("Chile Routine Exits for link:", link)
-}
-
-func printResponse(c chan string) {
-	// Printing the data comes into channel to console.
-	for  {
-		go checkLink(<-c, c)
-	}
 }
